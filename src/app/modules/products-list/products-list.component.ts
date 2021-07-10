@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { categoria } from 'src/app/shared/components/interface/interface';
 import { MercadoLibreService } from 'src/app/shared/services/mercado-libre.service';
 import { SwiperComponent } from "swiper/angular";
@@ -9,8 +10,11 @@ import { SwiperComponent } from "swiper/angular";
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.scss']
 })
-export class ProductsListComponent implements OnInit {
+export class ProductsListComponent implements OnInit, OnDestroy {
 
+  categoriaSubscription: Subscription;
+  itemsSubscription: Subscription;
+  obtenerArticuloSubscrition: Subscription;
   categorias: categoria[] = [];
   productosPorCategoria: any[] = [];
   categoriaActual: any;
@@ -23,8 +27,14 @@ export class ProductsListComponent implements OnInit {
 
   }
 
+  ngOnDestroy(): void {
+    this.categoriaSubscription && this.categoriaSubscription.unsubscribe();
+    this.itemsSubscription && this.itemsSubscription.unsubscribe();
+    this.obtenerArticuloSubscrition && this.obtenerArticuloSubscrition.unsubscribe();
+  }
+
   obtenerCategorias() {
-    this.srvMercadoLibre.obtenerListaCategoria().subscribe(
+    this.categoriaSubscription = this.srvMercadoLibre.obtenerListaCategoria().subscribe(
       categorias => {
         this.categorias = categorias
         this.buscarCategoria('Ropa y Accesorios');
@@ -41,7 +51,7 @@ export class ProductsListComponent implements OnInit {
 
 
   obtnerItemsCategoria(categoriaId: string) {
-    this.srvMercadoLibre.obtenerItemsCategoria(categoriaId).subscribe(
+    this.itemsSubscription = this.srvMercadoLibre.obtenerItemsCategoria(categoriaId).subscribe(
       productosPorCategoria => {
         this.productosPorCategoria = productosPorCategoria
       },
@@ -51,7 +61,7 @@ export class ProductsListComponent implements OnInit {
 
 
   obtnerArticulo() {
-    this.srvMercadoLibre.obtenerArticulos().subscribe(
+    this.obtenerArticuloSubscrition = this.srvMercadoLibre.obtenerArticulos().subscribe(
       articulosPorCategoriaAbrigo => {
         this.obtenerArticulos = articulosPorCategoriaAbrigo
       },

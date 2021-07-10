@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MercadoLibreService } from '../../services/mercado-libre.service';
@@ -9,8 +9,9 @@ import { eventos } from '../interface/events';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
+  buscarProductoSubscription: Subscription;
   filtroProducto?: Subscription;
   filtro = '';
   resultadoBusqueda: any;
@@ -21,8 +22,12 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngOnDestroy(): void {
+    this.buscarProductoSubscription && this.buscarProductoSubscription.unsubscribe();
+  }
+
   buscarProductos() {
-    this.srvMercadoLibre.buscarProducto(this.filtro).subscribe(
+    this.buscarProductoSubscription = this.srvMercadoLibre.buscarProducto(this.filtro).subscribe(
       filtroProducto => {
         this.resultadoBusqueda = filtroProducto
       },
