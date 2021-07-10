@@ -1,0 +1,6 @@
+<div class="container">
+    <div class="card" *ngFor="let card of cardsInformation" [routerLink]=" '/' + card.ruta">
+        <p class="title"> {{ card?.title }} </p>
+        <img [src]="card?.img" class="img-card">
+    </div>
+</div>

@@ -1,0 +1,5 @@
+<carousel class="carousel" [autoplay]="true" [autoplayInterval]="2000">
+    <div *ngFor="let articulos of obtenerArticulos?.results" class="carousel-cell">
+        <app-cards [data]="articulos" (click)="guardarLocalStorage(articulos)"></app-cards>
+    </div>
+</carousel>

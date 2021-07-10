@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+
+    .card {
+        height: 400px;
+        width: 500px;
+        background-size: cover;
+        font-size: 55px;
+        font-family: fantasy;
+        color: #ecf0f1;
+        justify-content: center;
+        display: flex;
+        box-shadow: 2px 2px 5px #999;
+        text-shadow: 2px 2px 5px #000;
+        letter-spacing: 4px;
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        margin-top: 3rem;
+        .img-card {
+            height: 400px;
+            width: 500px;
+        }
+        .title {
+            position: absolute;
+            top: 270px;
+            left: 54px;
+        }
+    }
+}

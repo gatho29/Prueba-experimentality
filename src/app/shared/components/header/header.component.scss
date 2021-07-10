@@ -1,0 +1,60 @@
+.container {
+    align-items: center;
+    display: flex;
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+
+    .title {
+        margin-left: 40px;
+        font-size: 60px;
+        font-weight: 600;
+    }
+    .search {
+        margin-left: 100px;
+        width: 390px;
+        margin-top: 1rem;
+        .button-search {
+            height: 40px;
+            margin-top: 0rem;
+            border-radius: 4px;
+            background-color: #d6dbdf;
+            border: none;
+            width: 45px;
+            font-size: 22px;
+            color: #56585a;
+        }
+    }
+    .icons {
+        gap: 30px;
+        margin-left: 60px;
+        font-size: 22px;
+        color: #56585a;
+    }
+    .button-login {
+        margin-left: 100px;
+        width: 115px;
+    }
+    .autocomplete {
+        position: absolute;
+        background-color: white;
+        z-index: 999;
+        padding: 40px;
+        padding-top: 5px;
+        height: 300px;
+        overflow-y: scroll;
+        border-radius: 10px;
+        right: 39%;
+        top: 10%;
+        width: 347px;
+        .item {
+            list-style-type: none;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 4px;
+            &:hover {
+                background-color: #f4f0f0;
+            }
+        }
+    }
+}

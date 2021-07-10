@@ -1,0 +1,15 @@
+<div class="container d-flex">
+    <div class="cards-products">
+        <div class="cards">
+            <img class="img-cards" [src]="data.thumbnail">
+            <div class="description">
+                <p class="name-product"> {{ data.title }} </p>
+                <div class="price-product d-flex">
+                    <p class="price"> {{ data.price | currency }} </p>
+                    <p class="price-before"></p>
+                </div>
+                <button class="button"> <i class="icons fas fa-shopping-cart"></i>Agregar al carrito</button>
+            </div>
+        </div>
+    </div>
+</div>

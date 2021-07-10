@@ -1,0 +1,16 @@
+<app-header></app-header>
+<app-menu></app-menu>
+<app-title title="DETALLES DEL PRODUCTO"></app-title>
+<div class="container">
+    <div class="details-product">
+        <img class="img-product" [src]="item?.thumbnail">
+        <div class="description">
+            <div class="text-description">
+                <h2 class="title"> {{ item?.title }} </h2>
+                <p class="price">Precio: {{ item?.price | currency }}</p>
+                <button class="button"> <i class="icons fas fa-shopping-cart"></i>Agregar al carrito</button>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

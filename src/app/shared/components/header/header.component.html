@@ -1,0 +1,17 @@
+<div class="container">
+    <p class="title">ClothesStore</p>
+    <div class="search mb-3 d-flex">
+        <input type="email" class="form-control" placeholder="Buscar" (keyup)="buscarProductos()" [(ngModel)]="filtro"
+            (focusout)="focusOutInput()">
+        <button class="button-search"> <i class="fas fa-search"></i></button>
+    </div>
+    <ul *ngIf="resultadoBusqueda?.results?.length > 0 " class="autocomplete">
+        <li *ngFor="let busqueda of resultadoBusqueda?.results" class="item" (click)="guardarLocalStorage(busqueda)"> {{
+            busqueda?.title }} </li>
+    </ul>
+    <div class="icons d-flex">
+        <i class="fas fa-shopping-cart"></i>
+        <i class="fas fa-user"></i>
+    </div>
+    <button class="button-login btn btn-primary">Log in</button>
+</div>
